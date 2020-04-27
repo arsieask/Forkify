@@ -1,2 +1,2 @@
 console.log('improted module');
-export default 23;
+export default 514;
