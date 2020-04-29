@@ -1,3 +1,4 @@
-import x from './test';
+import num from './test';
 
-console.log(`I imported ${x} from another module to another number`);
+const x = 23;
+console.log(`I imported ${num} from another module. Variable x is ${x}`);
