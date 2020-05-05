@@ -1,22 +1,31 @@
 import Search from './models/Search';
 
-const search = new Search('pizza');
-console.log(search);
-search.getResults();
+const state = {};
+
+const controlSearch = async () => {
+    //Get the query
+    const query = 'pizza'
+
+    if (query) {
+        //New search object
+        state.search = new Search(query);
+
+        //UI
+
+        //Search for recipes
+        await state.search.getResults();
+
+        //Results on UI
+        console.log(state.search.result);
+    }
+}
+
+document.querySelector('.search').addEventListener('submit', e => {
+    e.preventDefault();
+    controlSearch();
+});
+
+// const search = new Search('pizza');
+// console.log(search);
 
 
-
-// import string from './models/Search';
-// //import {add as a, multiply as mult, ID} from './views/searchView';
-// import * as searchView from './views/searchView';
-
-// console.log(`Using imports! ${searchView.add(searchView.ID, 2)} and ${searchView.multiply(3, 5)}. ${string}!`);
-
-
-// Search.js
-// const res = await axios(`${PROXY}http://food2fork.com/api/search?key=${KEY}&q=${this.query}`);
-// const res = await axios(`https://forkify-api.herokuapp.com/api/search?&q=${this.query}`);
-// 
-// Recipe.js
-// const res = await axios(`${PROXY}http://food2fork.com/api/get?key=${KEY}&rId=${this.id}`);
-// const res = await axios(`https://forkify-api.herokuapp.com/api/get?rId=${this.id}`);
