@@ -1,26 +1,30 @@
 import Search from './models/Search';
+import * as searchView from './views/searchView';
+import { elements } from './views/base';
 
 const state = {};
 
 const controlSearch = async () => {
     //Get the query
-    const query = 'pizza'
+    const query = searchView.getInput();
 
     if (query) {
         //New search object
         state.search = new Search(query);
 
         //UI
+        searchView.clearInput();
+        searchView.clearResults();
 
         //Search for recipes
         await state.search.getResults();
 
         //Results on UI
-        console.log(state.search.result);
+        searchView.renderResults(state.search.result);
     }
 }
 
-document.querySelector('.search').addEventListener('submit', e => {
+elements.searchForm.addEventListener('submit', e => {
     e.preventDefault();
     controlSearch();
 });
