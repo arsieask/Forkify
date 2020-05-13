@@ -42,10 +42,12 @@ export default class Recipe{
             });
 
             //Remove parentheses
+            ingerdient = ingredient.replace(/ *\([^)]*\) */g, '');
 
             //Parse ingerdient
-
+            return ingerdient;
         });
+
         this.ingredients = newIngredients;
     }
 }
