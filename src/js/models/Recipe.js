@@ -42,9 +42,33 @@ export default class Recipe{
             });
 
             //Remove parentheses
-            ingredient = ingredient.replace(/ *\([^)]*\) */g, '');
+            ingredient = ingredient.replace(/ *\([^)]*\) */g, ' ');
 
             //Parse ingerdient
+            const arrIng = this.ingredient.split(' ');
+            const unitIndex = arrIng.findIndex(el2 => unitsShort.includes(el2));
+
+            let objIng;
+            if (unitIndex > -1) {
+                //If there is an item
+
+            } else if (parseInt(arrIng[0], 10)) {
+                //If there is no itme but the 1st element is a number
+                objIng = {
+                    count: parseInt(arrIng[0], 10),
+                    unit: '',
+                    ingredient: arrIng.slice(1).join(' ')
+                }
+
+            } else if (unitIndex === -1) {
+                //If theres is no unit
+                objIng = {
+                    count: 1,
+                    unit: '',
+                    ingredient
+                }
+            }
+
             return ingredient;
         });
 
