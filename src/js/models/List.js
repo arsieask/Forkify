@@ -9,7 +9,7 @@ export default class List{
         const item = {
             id: uniqid(),
             count,
-            item,
+            unit,
             ingredient
         }
 
