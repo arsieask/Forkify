@@ -9,7 +9,6 @@ import * as likesView from './views/likesView';
 import { elements, renderLoader, clearLoader } from './views/base';
 
 const state = {};
-window.state = state;
 
 // SEARCH CONTROLLER
 
@@ -57,7 +56,7 @@ elements.searchResPages.addEventListener('click', e => {
 });
 
 
-//Recipe controller
+// RECIPE CONTROLLER
 
 const r = new Recipe(47746);
 r.getRecipe();
@@ -67,7 +66,6 @@ console.log(r);
 const controlRecipe = async () => {
     //Get ID from the URL
     const id = window.location.hash.replace('#', '');
-    console.log(id)
 
     if (id) {
         //Prepare UI
@@ -102,9 +100,6 @@ const controlRecipe = async () => {
         }
     }
 }
-
-// window.addEventListener('hashchange', controlRecipe);
-// window.addEventListener('load', controlRecipe);
 
 //Simplify for multiple events
 
@@ -214,6 +209,3 @@ elements.recipe.addEventListener('click', e => {
         controlLike();
     }
 });
-
-window.l = new List();
-
